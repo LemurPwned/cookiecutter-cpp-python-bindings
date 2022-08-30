@@ -1,0 +1,15 @@
+{
+    "username": "LemurPwned",
+    "email": "lemurpwned@gmail.com",
+    "repo_name": "lemur_cpp",
+    "version": "0.1.0",
+    "open_source_license": [
+        "MIT license",
+        "BSD license",
+        "ISC license",
+        "Apache Software License 2.0",
+        "GNU General Public License v3",
+        "Not open source"
+    ],
+    "repo_description": "A C++ library for Python"
+}

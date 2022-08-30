@@ -13,9 +13,13 @@
 {{cookiecutter.repo_description}}
 
 ## Installation
-
+To set up install install Pybind11:
+```
+python3 -m pip install pybind11[global]
+```
+and then run the following command:
 ```bash
-pip install {{cookiecutter.repo_name}}
+python3 -m pip install {{cookiecutter.repo_name}}
 ```
 
 ## Usage
@@ -30,5 +34,5 @@ Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code of conduc
 
 ## Authors
 
-* *Initial work* - [{{cookiecutter.github_username}}](www.github.com/{{cookiecutter.github_username}})
+* *Initial work* - [{{cookiecutter.username}}](www.github.com/{{cookiecutter.username}})
 

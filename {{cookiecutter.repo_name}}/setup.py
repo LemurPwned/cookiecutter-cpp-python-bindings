@@ -3,7 +3,7 @@ import re
 import subprocess
 import sys
 
-from setuptools import Extension, setup
+from setuptools import Extension, setup, find_namespace_packages
 from setuptools.command.build_ext import build_ext
 
 # Convert distutils Windows platform specifiers to CMake -A arguments
@@ -58,9 +58,7 @@ class CMakeBuild(build_ext):
             ]
 
         # In this example, we pass in the version to C++. You might not need to.
-        cmake_args += [
-            f"-DVERSION_INFO={self.distribution.get_version()}"
-        ]
+        cmake_args += [f"-DVERSION_INFO={self.distribution.get_version()}"]
 
         if self.compiler.compiler_type != "msvc":
             # Using Ninja-build since it a) is available as a wheel and b)
@@ -137,11 +135,14 @@ setup(
     version="{{cookiecutter.version}}",
     author="{{cookiecutter.username}}",
     author_email="{{cookiecutter.email}}",
-    description="{{cookiecutter.description}}",
+    description="{{cookiecutter.repo_description}}",
     long_description="",
     ext_modules=[CMakeExtension("{{cookiecutter.repo_name}}")],
     cmdclass={"build_ext": CMakeBuild},
     zip_safe=False,
-    extras_require={"test": ["pytest>=6.0"]},
     python_requires=">=3.6",
+    namespace_packages=["{{cookiecutter.repo_name}}"],
+    packages=find_namespace_packages(include=["{{cookiecutter.repo_name}}.*"]),
+    include_package_data=True,
+    package_data={"{{cookiecutter.repo_name}}": ["py.typed", "*.pyi"]},
 )
